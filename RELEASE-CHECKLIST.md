@@ -9,8 +9,9 @@ Document limitations and validate the features actually offered.
 - [x] Author/maintainer: Joseph Hill <joe@sixhillsgroup.com.au>.
 - [x] Copyright holder: Joseph Hill, with upstream MIT notices preserved.
 - [x] Record upstream copyright holders in Authors@R and add NEWS.md.
-- [ ] Verify that jmpread is available and acceptable as a CRAN package name,
-      including checking CRAN's archive immediately before submission.
+- [x] Check current CRAN, CRAN archive and current Bioconductor indexes for
+      case-insensitive name conflicts (28 October 2026: none found).
+      Recheck immediately before submission; this is not a name reservation.
 - [ ] Review the built source archive: include code, help, vignette, tests and
       licensed fixtures; exclude private exports, reference checkout and work files.
 
@@ -27,13 +28,13 @@ Document limitations and validate the features actually offered.
 - [x] Commit source, tests, licenses, vignette and workflow. Exclude
       validation/private, local libraries, build output and original private data.
 - [x] Set repository and issue-tracker URLs in DESCRIPTION.
-- [ ] Run GitHub Actions for Windows/macOS/Linux on R-release and R-devel.
-      DESCRIPTION should be at the repository root for the current workflow.
+- [x] Run the 0.0.2 baseline on Windows/macOS/Linux with R-release and R-devel.
+- [ ] Obtain fresh 0.1.0 results, including the exact-archive release workflow.
 - [ ] Review README examples, help, NEWS and the rendered vignette as a new user.
 
 ## 4. Check the exact submission archive
 
-- [ ] Choose the release version (for example 0.1.0 after testing is complete).
+- [x] Prepare version 0.1.0 with the existing feature set.
 - [ ] Build with current R-release or R-patched: R CMD build jmpread.
 - [ ] Run R CMD check --as-cran on the exact tarball with current R-devel;
       investigate errors, warnings and significant notes. Explain legitimate notes.
@@ -58,5 +59,6 @@ Official references:
 - https://cran.r-project.org/web/packages/submission_checklist.html
 - https://cran.r-project.org/submit.html
 
-Current status: local preparation only. No repository, external check upload,
-email or CRAN submission has been created by this checklist.
+Current status: public repository exists and baseline CI passed. Version 0.1.0
+is a release candidate. Independent JMP export checks remain outstanding.
+No release tag, GitHub release or CRAN submission has been made.

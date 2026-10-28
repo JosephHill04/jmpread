@@ -3,8 +3,9 @@
 [![R-CMD-check](https://github.com/JosephHill04/jmpread/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/JosephHill04/jmpread/actions/workflows/R-CMD-check.yaml)
 
 Read JMP (`.jmp`) tables directly in R, without Python or a JMP installation.
-This is an experimental 0.0.2 release candidate for local use and testing.
-It has not been submitted to CRAN.
+Version 0.1.0 is prepared as the first release candidate. It has not been
+submitted to CRAN or published as a tagged release. See [RELEASE.md](RELEASE.md)
+for the remaining validation and release steps.
 
 ## Install from GitHub
 
@@ -18,33 +19,41 @@ remotes::install_github("JosephHill04/jmpread")
 Report problems through the repository's Issues tab. Please use synthetic
 examples and avoid attaching confidential or personal data. See CONTRIBUTING.md.
 
-## Install and use
+## Try the release candidate
+
+```r
+remotes::install_github("JosephHill04/jmpread@release/0.1.0")
+```
+
+## Install an archive and read a table
 
 In R or RStudio, install the supplied source archive:
 
 ```r
-install.packages("jmpread_0.0.2.tar.gz", repos = NULL, type = "source")
+install.packages("jmpread_0.1.0.tar.gz", repos = NULL, type = "source")
 library(jmpread)
 
-data <- read_jmp("ARGO.jmp")
+# This small, licensed table is included with the package.
+path <- system.file("extdata", "jmpreader_jl", "example1", "example1.jmp",
+                    package = "jmpread")
+data <- read_jmp(path)
 head(data)
 str(data)
 
-incidents <- read_jmp("Incidents.jmp")
-incidents[["Near Miss Incidents"]]
-
 # Preserve source order while reading only the requested columns.
-read_jmp("Incidents.jmp", select = c("Tonnes", "Max Temperature"))
+read_jmp(path, select = c("floats", "ints"))
 
 # Return ordinary vectors without attached source metadata.
-read_jmp("ARGO.jmp", metadata = FALSE)
+read_jmp(path, metadata = FALSE)
 ```
+
+For your own data, use `read_jmp("path/to/your-table.jmp")`.
 
 The package has no additional runtime R package dependencies and no compiled code.
 The optional knitr package is needed only to rebuild the vignette.
 Share the source archive with another R user and use the same installation
 command. Windows users can alternatively install the supplied `.zip` with
-`install.packages("jmpread_0.0.2.zip", repos = NULL, type = "win.binary")`.
+`install.packages("jmpread_0.1.0.zip", repos = NULL, type = "win.binary")`.
 Keep the two original JMP files in your own data folder; they are not shipped
 inside the public package.
 
@@ -74,16 +83,12 @@ files were checked against the pinned Python reference (18 files with value
 columns; the row-state-only file has separate raw-byte assertions).
 This is differential agreement, not independent validation against JMP.
 See `validation/RESULTS.md` in the project for exact scope and local check results.
-The local Windows `R CMD check --no-manual` completed with Status: OK, including
-tests, examples and vignette rebuilding. The Windows binary was also installed
-and tested in a clean library.
-
-The two user files currently decode as:
-
-| File | Rows | Columns |
-| --- | ---: | --- |
-| ARGO.jmp | 50 | Elongation |
-| Incidents.jmp | 20 | Near Miss Incidents, Max Temperature, Tonnes |
+The 0.0.2 baseline passed all six Windows/macOS/Linux R-release/R-devel jobs
+using `--as-cran --no-manual`. Those routine jobs disable CRAN incoming checks;
+they are not equivalent to an incoming submission check. See RELEASE.md for
+fresh 0.1.0 results, including full manual and exact-archive checks.
+Joseph Hill reports successful imports and analyses by colleagues. Direct JMP
+CSV comparisons are still outstanding and must be completed before release.
 
 To finish Phase 1, export each original table as CSV from JMP with all rows,
 source column order and full numeric precision, then run:
@@ -100,12 +105,15 @@ Do not generate those trusted CSVs with this package or the Python reference.
 
 ```sh
 R CMD build jmpread
-R CMD check --no-manual jmpread_0.0.2.tar.gz
+R CMD check --as-cran jmpread_0.1.0.tar.gz
 ```
 
 The package tests use base R and run as part of `R CMD check`. Cross-platform
 GitHub Actions is configured for Windows, macOS and Linux. See the
 [Actions tab](https://github.com/JosephHill04/jmpread/actions) for actual run results.
+The separate Release candidate workflow builds a source archive with R-release,
+checks it with the PDF manual, and checks the identical archive under R-devel.
+It uploads source/manual/check artifacts; it does not publish or submit anything.
 
 ## Current limits
 

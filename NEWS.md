@@ -1,3 +1,13 @@
+# jmpread 0.1.0
+
+- Prepare the first public release with the existing read_jmp() interface.
+- Read common numeric, character, pooled and compressed encodings without a
+  Python runtime or JMP installation, retaining source metadata and raw row states.
+- Preserve temporal precision and documented missing-value behavior.
+- Add exact-archive release checks with PDF manual building and R-devel validation.
+- Clarify upstream contributor attribution and public installation examples.
+- No decoding algorithm changes from the tested 0.0.2 version.
+
 # jmpread 0.0.2
 
 - Set Joseph Hill as author and maintainer, with the confirmed contact email.

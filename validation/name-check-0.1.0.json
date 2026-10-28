@@ -1,0 +1,50 @@
+{
+  "package": "jmpread",
+  "checked_at_utc": "2026-10-28T02:50:49.886544+00:00",
+  "results": [
+    {
+      "source": "CRAN current",
+      "url": "https://cran.r-project.org/src/contrib/PACKAGES.gz",
+      "status": "checked",
+      "names_checked": 25585,
+      "matches": []
+    },
+    {
+      "source": "CRAN archive",
+      "url": "https://cran.r-project.org/src/contrib/Archive/",
+      "status": "checked",
+      "names_checked": 28348,
+      "matches": []
+    },
+    {
+      "source": "Bioconductor software",
+      "url": "https://bioconductor.org/packages/release/bioc/src/contrib/PACKAGES.gz",
+      "status": "checked",
+      "names_checked": 2385,
+      "matches": []
+    },
+    {
+      "source": "Bioconductor annotation",
+      "url": "https://bioconductor.org/packages/release/data/annotation/src/contrib/PACKAGES.gz",
+      "status": "checked",
+      "names_checked": 928,
+      "matches": []
+    },
+    {
+      "source": "Bioconductor experiment",
+      "url": "https://bioconductor.org/packages/release/data/experiment/src/contrib/PACKAGES.gz",
+      "status": "checked",
+      "names_checked": 434,
+      "matches": []
+    },
+    {
+      "source": "Bioconductor workflows",
+      "url": "https://bioconductor.org/packages/release/workflows/src/contrib/PACKAGES.gz",
+      "status": "checked",
+      "names_checked": 25,
+      "matches": []
+    }
+  ],
+  "all_verified": true,
+  "conflict_found": false
+}

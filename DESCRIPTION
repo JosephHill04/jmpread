@@ -1,15 +1,15 @@
 Package: jmpread
 Type: Package
 Title: Read 'JMP' Binary Data Tables in Native R
-Version: 0.0.2
+Version: 0.1.0
 Authors@R: c(
     person("Joseph", "Hill", role = c("aut", "cre"),
            email = "joe@sixhillsgroup.com.au"),
-    person("Andy", "Bardagjy", role = "cph",
+    person("Andy", "Bardagjy", role = c("ctb", "cph"),
            comment = "jumpio algorithms adapted under the MIT license"),
-    person("Jaakko", "Ruohio", role = "cph",
+    person("Jaakko", "Ruohio", role = c("ctb", "cph"),
            comment = "JMPReader.jl format work and MIT-licensed fixtures"))
-Description: An experimental reader for 'JMP' binary data tables, implemented
+Description: A reader for 'JMP' binary data tables, implemented
     entirely in R. Supports common numeric, character, temporal and row-state
     column encodings, including gzip compression. Returns data frames with
     source metadata and reports unsupported or malformed encodings. Based

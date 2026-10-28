@@ -10,3 +10,7 @@
 ^\.gitattributes$
 ^CONTRIBUTING\.md$
 ^LICENSE\.md$
+^RELEASE\.md$
+^release$
+^\.release-input$
+^check$
