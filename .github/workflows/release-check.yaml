@@ -27,6 +27,8 @@ jobs:
           extra-packages: any::rcmdcheck
           needs: check
       - uses: r-lib/actions/setup-tinytex@v2
+      - name: Install HTML manual validator
+        run: sudo apt-get update && sudo apt-get install -y tidy
       - name: Build and check the submission archive
         shell: bash
         run: |
@@ -65,6 +67,8 @@ jobs:
           extra-packages: any::rcmdcheck
           needs: check
       - uses: r-lib/actions/setup-tinytex@v2
+      - name: Install HTML manual validator
+        run: sudo apt-get update && sudo apt-get install -y tidy
       - uses: actions/download-artifact@v4
         with:
           name: jmpread-release-source
