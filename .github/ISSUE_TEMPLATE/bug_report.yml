@@ -1,0 +1,35 @@
+name: Import or decoding problem
+description: Report a JMP file that fails to import or returns unexpected values.
+title: "[Bug]: "
+body:
+  - type: markdown
+    attributes:
+      value: "Please use a small synthetic example. Do not attach confidential or personal data."
+  - type: textarea
+    id: problem
+    attributes:
+      label: What happened?
+      description: Include expected versus actual behavior and the full error message.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Minimal example
+      description: R code and, if available, a redistributable synthetic JMP file.
+      render: R
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Paste sessionInfo() and the JMP writer version if known.
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: validation
+    attributes:
+      label: Source of expected values
+      description: Was this checked using JMP itself, a direct export, or another reader?

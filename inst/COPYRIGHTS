@@ -1,0 +1,15 @@
+jmpread's binary layout and decoding logic are adapted from:
+
+jumpio by Andy Bardagjy, copyright 2026, MIT license.
+https://github.com/abardagjy/jumpio
+Reference commit: e9cf1b85016637f90cbfca0760ded736475d20c1
+Full license: licenses/jumpio-LICENSE
+
+The original format work and included test fixtures originate in:
+JMPReader.jl by Jaakko Ruohio, copyright 2024, MIT license.
+https://github.com/jaakkor2/JMPReader.jl
+Fixture provenance: extdata/jmpreader_jl/ATTRIBUTION.md
+Full license: licenses/JMPReader-LICENSE
+
+The implementation is native R. Python and JMP are not runtime dependencies.
+JMP is a trademark of its owner; this project is independent.

@@ -1,0 +1,12 @@
+^\.github$
+^tools$
+^validation$
+^cran-comments\.md$
+^RELEASE-CHECKLIST\.md$
+^ROADMAP\.md$
+^.*\.Rcheck$
+^.*\.tar\.gz$
+^.*\.zip$
+^\.gitattributes$
+^CONTRIBUTING\.md$
+^LICENSE\.md$

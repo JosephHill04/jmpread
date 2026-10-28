@@ -1,0 +1,12 @@
+* text=auto
+*.R text eol=lf
+*.Rd text eol=lf
+*.Rhtml text eol=lf
+*.md text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+DESCRIPTION text eol=lf
+NAMESPACE text eol=lf
+*.jmp binary
+*.png binary
+*.pdf binary

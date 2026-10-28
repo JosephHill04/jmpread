@@ -1,0 +1,15 @@
+name: Compatibility or feature request
+description: Suggest support for an encoding, metadata field or workflow.
+body:
+  - type: textarea
+    id: request
+    attributes:
+      label: What would you like to do?
+      description: Describe the use case and how the current reader falls short.
+    validations:
+      required: true
+  - type: textarea
+    id: example
+    attributes:
+      label: Example or reference
+      description: Include a JMP version, public documentation or a synthetic example where possible.

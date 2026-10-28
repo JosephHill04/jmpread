@@ -1,0 +1,16 @@
+.Rhistory
+.RData
+*.Rcheck/
+*.tar.gz
+*.zip
+validation/private/
+.Rproj.user/
+.Ruserdata
+.Renviron
+.env
+.env.*
+!.env.example
+*.log
+validation/getting-started.html
+.DS_Store
+Thumbs.db
