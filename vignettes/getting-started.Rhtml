@@ -7,7 +7,7 @@
 <html lang="en"><meta charset="utf-8"><title>Getting started with jmpread</title>
 <style>body{max-width:760px;margin:3em auto;font:18px/1.6 system-ui;padding:0 1em;color:#193242}pre{background:#f1f5f8;padding:1em;overflow:auto}h1,h2{line-height:1.2}</style>
 <h1>Getting started with jmpread</h1>
-<p>This experimental package imports JMP tables using native R. Python and JMP are not runtime dependencies. Check important results against a trusted export made in JMP.</p>
+<p>This package imports common JMP table encodings using native R. Python and JMP are not runtime dependencies. Compatibility is limited to the documented encodings.</p>
 <h2>Read the bundled table</h2>
 <!--begin.rcode setup
 library(jmpread)
@@ -39,7 +39,6 @@ end.rcode-->
 <p>Use a table you created yourself or have documented permission to use.</p>
 <pre>my_table &lt;- read_jmp("my-data.jmp")
 summary(my_table)</pre>
-<h2>Validate and share</h2>
-<p>Export all rows and columns directly from JMP as a full-precision CSV, then run the project's tools/validate_jmp_export.R script. Python-reference agreement is a useful regression check, but is not an independent JMP export.</p>
-<p>Share the package archive and install it with install.packages using repos = NULL and type = "source". The package has no additional runtime dependencies. knitr is only needed to rebuild this vignette. Share original data only when you have permission to do so.</p>
+<h2>Help and support</h2>
+<p>Use <code>?read_jmp</code> for all options and supported encodings. Report problems through the <a href="https://github.com/JosephHill04/jmpread/issues">issue tracker</a>, including your R version, package version and a small example you have permission to share.</p>
 </html>

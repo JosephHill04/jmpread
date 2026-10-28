@@ -1,6 +1,6 @@
 # Contributing to jmpread
 
-Thanks for helping improve the reader. The current release is experimental.
+Thanks for helping improve jmpread.
 
 ## Report a problem
 
@@ -24,7 +24,7 @@ JMP validation.
 
    ```sh
    R CMD build jmpread
-   R CMD check --no-manual jmpread_0.0.2.tar.gz
+   R CMD check --no-manual jmpread_0.1.0.tar.gz
    ```
 
 5. Open a pull request explaining the problem, solution and actual checks run.

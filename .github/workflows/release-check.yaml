@@ -1,0 +1,101 @@
+name: Package validation
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+concurrency:
+  group: release-check-${{ github.ref }}
+  cancel-in-progress: true
+env:
+  R_KEEP_PKG_SOURCE: yes
+  _R_CHECK_FORCE_SUGGESTS_: "true"
+  _R_CHECK_CRAN_INCOMING_: "true"
+jobs:
+  source:
+    name: Build source and full check (R release)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: release
+          use-public-rspm: true
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          extra-packages: any::rcmdcheck
+          needs: check
+      - uses: r-lib/actions/setup-tinytex@v2
+      - name: Install standard manual fonts and index builder
+        run: |
+          tlmgr update --self
+          tlmgr install courier helvetic times makeindex
+      - name: Install HTML manual validator
+        run: sudo apt-get update && sudo apt-get install -y tidy
+      - name: Build and check the submission archive
+        shell: bash
+        run: |
+          mkdir -p release
+          R CMD build .
+          mv jmpread_*.tar.gz release/
+          R CMD check --as-cran release/jmpread_*.tar.gz
+          if grep -Eq '^Status:.*(ERROR|WARNING)' jmpread.Rcheck/00check.log; then cat jmpread.Rcheck/00check.log; exit 1; fi
+          R CMD Rd2pdf --no-preview --output=release/jmpread-manual.pdf .
+          cp jmpread.Rcheck/00check.log release/R-release-check.log
+          printf '%s\n' "$GITHUB_SHA" > release/SOURCE-COMMIT
+          cd release
+          sha256sum *.tar.gz *.pdf > SHA256SUMS
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: jmpread-release-source
+          path: |
+            release/
+            jmpread.Rcheck/00check.log
+          if-no-files-found: error
+  devel:
+    name: Check the same source archive (R devel)
+    needs: source
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: devel
+          use-public-rspm: true
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          extra-packages: any::rcmdcheck
+          needs: check
+      - uses: r-lib/actions/setup-tinytex@v2
+      - name: Install standard manual fonts and index builder
+        run: |
+          tlmgr update --self
+          tlmgr install courier helvetic times makeindex
+      - name: Install HTML manual validator
+        run: sudo apt-get update && sudo apt-get install -y tidy
+      - uses: actions/download-artifact@v4
+        with:
+          name: jmpread-release-source
+          path: .release-input
+      - name: Verify and check the exact R-release archive
+        shell: bash
+        run: |
+          cd .release-input/release
+          sha256sum --check SHA256SUMS
+          cd ../..
+          R CMD check --as-cran .release-input/release/jmpread_*.tar.gz || { cat jmpread.Rcheck/Rdlatex.log; exit 1; }
+          if grep -Eq '^Status:.*(ERROR|WARNING)' jmpread.Rcheck/00check.log; then cat jmpread.Rcheck/00check.log; exit 1; fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: jmpread-release-r-devel-check
+          path: |
+            jmpread.Rcheck/00check.log
+            jmpread.Rcheck/Rdlatex.log
+            jmpread.Rcheck/jmpread-manual.log
+          if-no-files-found: warn

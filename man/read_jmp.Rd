@@ -19,7 +19,7 @@ UTC \code{POSIXct}, and durations to \code{difftime}, or return raw JMP seconds.
 \value{A \code{data.frame} preserving original column names. With
 \code{metadata = TRUE}, \code{attr(result, "jmp_metadata")} describes the
 file and \code{attr(result[[i]], "jmp_metadata")} describes each column.}
-\description{An experimental pure R reader for JMP binary files. Handles
+\description{Read JMP binary files using native R. Handles
 common numeric, fixed and variable character, pooled character, compressed,
 temporal and row-state storage. Unsupported encodings raise errors.}
 \details{Numeric missing sentinels become \code{NA}. Empty character strings
@@ -37,7 +37,7 @@ Use \code{metadata = FALSE} to avoid retaining raw blocks.
 The full input is read into memory. The option
 \code{jmpread.max_inflated_bytes} limits each declared inflated column size
 (default 256 MiB). It is not a streaming decompression memory limit; this
-experimental reader is not hardened against adversarial compressed files.
+reader is not hardened against adversarial compressed files.
 Embedded NULs in text are rejected because R strings cannot represent them.}
 \examples{
 path <- system.file("extdata", "jmpreader_jl", "example1", "example1.jmp",
