@@ -2,9 +2,9 @@
 
 ## Phase 1: proof of concept
 
-- [x] Open ARGO.jmp and Incidents.jmp in native R.
+- [x] Read the MIT-licensed JMPReader.jl fixtures in native R.
 - [x] Compare every decoded cell with the pinned Python implementation.
-- [ ] Compare both tables with independent full-precision JMP CSV exports.
+- [ ] Validate a synthetic or permissibly licensed table against a direct JMP export.
 
 ## Phase 2: basic package
 
@@ -16,7 +16,7 @@
 
 ## Phase 3: broader compatibility
 
-- [x] Test the 17 redistributable reference fixtures and the two user files.
+- [x] Test the 17 MIT-licensed reference fixtures.
 - [x] Validate malformed headers, dimensions, offsets and column encodings.
 - [x] Retain raw metadata and row states.
 - [ ] Independent JMP exports covering each supported encoding and missing case.

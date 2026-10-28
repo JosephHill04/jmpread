@@ -17,7 +17,7 @@ Document limitations and validate the features actually offered.
 
 ## 2. Evidence for the existing features
 
-- [ ] Compare ARGO and Incidents with full-precision CSVs exported directly by JMP.
+- [ ] Compare a synthetic or permissibly licensed table with a direct full-precision JMP CSV export.
 - [ ] Spot-check representative numeric/text/date/missing/compressed cases against
       independent JMP output, using redistributable fixtures where possible.
 - [ ] Record tested file versions and unsupported cases honestly; resolve discrepancies.
@@ -26,7 +26,7 @@ Document limitations and validate the features actually offered.
 
 - [x] Create a dedicated jmpread Git repository with DESCRIPTION at its root.
 - [x] Commit source, tests, licenses, vignette and workflow. Exclude
-      validation/private, local libraries, build output and original private data.
+      validation/private, local libraries, build output and data without documented redistribution permission.
 - [x] Set repository and issue-tracker URLs in DESCRIPTION.
 - [x] Run the 0.0.2 baseline on Windows/macOS/Linux with R-release and R-devel.
 - [ ] Obtain fresh 0.1.0 results, including the exact-archive release workflow.

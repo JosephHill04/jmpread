@@ -1,5 +1,7 @@
 # jmpread 0.1.0
 
+- Restrict examples and validation records to the MIT-licensed fixture corpus.
+
 - Prepare the first public release with the existing read_jmp() interface.
 - Read common numeric, character, pooled and compressed encodings without a
   Python runtime or JMP installation, retaining source metadata and raw row states.

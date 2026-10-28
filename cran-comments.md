@@ -16,7 +16,7 @@ Do not submit until the checks and independent validation in RELEASE.md are done
 First release, supporting the documented common encodings. No CRAN submission
 has been made. JMP and Python are not required at runtime.
 Maintainer: Joseph Hill <joe@sixhillsgroup.com.au>.
-Independent JMP exports and fresh submission checks are outstanding.
+Independent validation against a direct export of a synthetic or permissibly licensed JMP table remains outstanding.
 The first release intentionally retains the current feature set. Additional
 encodings and structured metadata are future enhancements, not promised support.
 

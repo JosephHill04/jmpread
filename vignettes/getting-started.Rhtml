@@ -36,10 +36,9 @@ attr(data[["date"]], "jmp_metadata")$storage
 end.rcode-->
 <p>Raw post-header blocks are retained, including payload bytes, so metadata can increase memory use. Notes, units, labels and formulas are not exposed as structured fields yet. Formulas are never executed. Row-state columns are lists of raw bytes.</p>
 <h2>Use your own files</h2>
-<pre>argo &lt;- read_jmp("ARGO.jmp")
-incidents &lt;- read_jmp("Incidents.jmp")
-summary(argo)
-incidents[["Near Miss Incidents"]]</pre>
+<p>Use a table you created yourself or have documented permission to use.</p>
+<pre>my_table &lt;- read_jmp("my-data.jmp")
+summary(my_table)</pre>
 <h2>Validate and share</h2>
 <p>Export all rows and columns directly from JMP as a full-precision CSV, then run the project's tools/validate_jmp_export.R script. Python-reference agreement is a useful regression check, but is not an independent JMP export.</p>
 <p>Share the package archive and install it with install.packages using repos = NULL and type = "source". The package has no additional runtime dependencies. knitr is only needed to rebuild this vignette. Share original data only when you have permission to do so.</p>
