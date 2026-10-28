@@ -28,7 +28,9 @@ jobs:
           needs: check
       - uses: r-lib/actions/setup-tinytex@v2
       - name: Install standard manual fonts and index builder
-        run: tlmgr install courier helvetic times makeindex
+        run: |
+          tlmgr update --self
+          tlmgr install courier helvetic times makeindex
       - name: Install HTML manual validator
         run: sudo apt-get update && sudo apt-get install -y tidy
       - name: Build and check the submission archive
@@ -70,7 +72,9 @@ jobs:
           needs: check
       - uses: r-lib/actions/setup-tinytex@v2
       - name: Install standard manual fonts and index builder
-        run: tlmgr install courier helvetic times makeindex
+        run: |
+          tlmgr update --self
+          tlmgr install courier helvetic times makeindex
       - name: Install HTML manual validator
         run: sudo apt-get update && sudo apt-get install -y tidy
       - uses: actions/download-artifact@v4
