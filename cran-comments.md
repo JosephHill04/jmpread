@@ -10,7 +10,7 @@
 
 First experimental release. No CRAN submission has been made.
 Maintainer: Joseph Hill <joe@sixhillsgroup.com.au>.
-Independent JMP exports and fresh submission checks are outstanding.
+Independent validation against a direct export of a synthetic or permissibly licensed JMP table remains outstanding.
 The first release intentionally retains the current feature set. Additional
 encodings and structured metadata are future enhancements, not promised support.
 

@@ -1,3 +1,7 @@
+# jmpread 0.0.3
+
+- Restrict examples and validation records to the MIT-licensed fixture corpus.
+
 # jmpread 0.0.2
 
 - Set Joseph Hill as author and maintainer, with the confirmed contact email.
