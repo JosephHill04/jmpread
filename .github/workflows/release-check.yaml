@@ -27,6 +27,8 @@ jobs:
           extra-packages: any::rcmdcheck
           needs: check
       - uses: r-lib/actions/setup-tinytex@v2
+      - name: Install standard manual fonts and index builder
+        run: tlmgr install courier helvetic times makeindex
       - name: Install HTML manual validator
         run: sudo apt-get update && sudo apt-get install -y tidy
       - name: Build and check the submission archive
@@ -67,6 +69,8 @@ jobs:
           extra-packages: any::rcmdcheck
           needs: check
       - uses: r-lib/actions/setup-tinytex@v2
+      - name: Install standard manual fonts and index builder
+        run: tlmgr install courier helvetic times makeindex
       - name: Install HTML manual validator
         run: sudo apt-get update && sudo apt-get install -y tidy
       - uses: actions/download-artifact@v4
@@ -79,10 +83,13 @@ jobs:
           cd .release-input/release
           sha256sum --check SHA256SUMS
           cd ../..
-          R CMD check --as-cran .release-input/release/jmpread_*.tar.gz
+          R CMD check --as-cran .release-input/release/jmpread_*.tar.gz || { cat jmpread.Rcheck/Rdlatex.log; exit 1; }
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: jmpread-release-r-devel-check
-          path: jmpread.Rcheck/00check.log
+          path: |
+            jmpread.Rcheck/00check.log
+            jmpread.Rcheck/Rdlatex.log
+            jmpread.Rcheck/jmpread-manual.log
           if-no-files-found: warn
