@@ -1,5 +1,7 @@
 # jmpread
 
+[![R-CMD-check](https://github.com/JosephHill04/jmpread/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/JosephHill04/jmpread/actions/workflows/R-CMD-check.yaml)
+
 Read JMP (`.jmp`) tables directly in R, without Python or a JMP installation.
 This is an experimental 0.0.2 release candidate for local use and testing.
 It has not been submitted to CRAN.

@@ -18,5 +18,6 @@ top level. Do not upload the surrounding coursework directory, private exports,
 development libraries or the Python reference checkout.
 
 The source is experimental. Publishing this repository is not a CRAN release.
-Repository settings in this file are intended settings until applied and verified
-on GitHub. Check the repository page and Actions tab after the initial upload.
+The visibility, description, default branch, topics, issue/wiki/project/discussion
+settings and merge options were applied and verified on 28 October 2026.
+The initial upload triggered R-CMD-check; see Actions for the actual results.

@@ -23,10 +23,10 @@ Document limitations and validate the features actually offered.
 
 ## 3. Clean project and public home
 
-- [ ] Put the jmpread source in its own project/repository, separate from coursework.
-- [ ] Commit source, tests, licenses, vignette and workflow. Exclude
+- [x] Create a dedicated jmpread Git repository with DESCRIPTION at its root.
+- [x] Commit source, tests, licenses, vignette and workflow. Exclude
       validation/private, local libraries, build output and original private data.
-- [ ] Set repository and issue-tracker URLs in DESCRIPTION once they exist.
+- [x] Set repository and issue-tracker URLs in DESCRIPTION.
 - [ ] Run GitHub Actions for Windows/macOS/Linux on R-release and R-devel.
       DESCRIPTION should be at the repository root for the current workflow.
 - [ ] Review README examples, help, NEWS and the rendered vignette as a new user.
