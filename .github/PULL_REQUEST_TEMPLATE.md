@@ -1,11 +1,8 @@
-## Problem and change
+## Change
 
-Explain the concrete problem and resulting behavior.
+Describe the problem and the resulting behavior.
 
 ## Validation
 
-List the checks actually run and any remaining limitations.
-
-- [ ] Relevant regression coverage added or updated where needed
-- [ ] Documentation and NEWS updated where needed
-- [ ] Included data is redistributable with provenance and licensing
+Describe the checks run, relevant regression coverage and any limitations.
+For added example data, include its source and redistribution licence.

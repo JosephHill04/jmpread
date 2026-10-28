@@ -3,9 +3,6 @@
 [![R-CMD-check](https://github.com/JosephHill04/jmpread/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/JosephHill04/jmpread/actions/workflows/R-CMD-check.yaml)
 
 Read JMP (`.jmp`) tables directly in R, without Python or a JMP installation.
-Version 0.1.0 is a release candidate. It has not been submitted to CRAN
-or published as a tagged release. See RELEASE.md for remaining steps.
-
 ## Install
 
 ```r
@@ -21,7 +18,7 @@ install.packages("jmpread_0.1.0.tar.gz", repos = NULL, type = "source")
 
 Windows users can install the supplied `.zip` with `repos = NULL` and
 `type = "win.binary"`. No additional runtime R packages or compiled code are
-required. The optional knitr package is needed only to rebuild the vignette.
+required.
 
 ## Read the bundled example
 
@@ -61,38 +58,23 @@ time of day, so date columns use POSIXct to retain precision. Use
 pooled missing values become `NA_character_`. Numeric missing sentinels become NA.
 Formulas remain in raw metadata and are never executed.
 
-## Validation and provenance
+## Validation
 
-The distributed regression corpus contains **17 MIT-licensed fixtures**.
-Differential comparisons against the pinned Python reader cover **168,717 cells
-across 16 files with value columns**. The row-state-only fixture has separate
-raw-byte assertions. These are reader-to-reader comparisons, not independent
-validation against JMP itself. See validation/RESULTS.md for scope and provenance.
+Tests cover 17 MIT-licensed JMPReader.jl fixtures, including numeric, text,
+missing, compressed and temporal values. Comparisons against the pinned Python
+reader agree across 168,717 cells. A separate comparison against an original
+Excel source imported into JMP Pro 17.0.0 agrees exactly across 890,336 shared
+cells, including 38,374 missing values. The private comparison data is not
+distributed. See [validation results](validation/RESULTS.md) for scope.
 
-Before release, independently validate using a synthetic table you create in JMP
-or another table you have documented permission to use. Export all rows and
-columns as a full-precision CSV and compare it with the supplied helper:
+## Help and support
 
-```sh
-Rscript tools/validate_jmp_export.R /path/example.jmp /path/trusted-export.csv
-```
+Use `?read_jmp` for the function reference and
+`vignette("getting-started", package = "jmpread")` for examples.
+Report problems through [Issues](https://github.com/JosephHill04/jmpread/issues)
+with your R version, package version and a small example you can share.
 
-Keep private exports out of the repository. Tests and public validation summaries
-use only the licensed fixtures; data of unverified provenance is not included.
-
-## Development and support
-
-```sh
-R CMD build jmpread
-R CMD check --as-cran jmpread_0.1.0.tar.gz
-```
-
-Tests use base R. Cross-platform checks run on Windows, macOS and Linux with
-R-release and R-devel. See the [Actions tab](https://github.com/JosephHill04/jmpread/actions)
-for actual results. Read CONTRIBUTING.md and report problems through
-[Issues](https://github.com/JosephHill04/jmpread/issues), using synthetic examples.
-
-## Current limits
+## Limitations
 
 Compatibility outside the documented and tested encodings is unconfirmed. Notes,
 units, labels and formulas are retained as raw blocks, not structured fields.

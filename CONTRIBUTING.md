@@ -1,6 +1,6 @@
 # Contributing to jmpread
 
-Thanks for helping improve the reader. The current release is experimental.
+Thanks for helping improve jmpread.
 
 ## Report a problem
 

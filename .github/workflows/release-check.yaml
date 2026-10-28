@@ -1,4 +1,4 @@
-name: Release candidate
+name: Package validation
 on: [push, pull_request, workflow_dispatch]
 permissions:
   contents: read
@@ -40,6 +40,7 @@ jobs:
           R CMD build .
           mv jmpread_*.tar.gz release/
           R CMD check --as-cran release/jmpread_*.tar.gz
+          if grep -Eq '^Status:.*(ERROR|WARNING)' jmpread.Rcheck/00check.log; then cat jmpread.Rcheck/00check.log; exit 1; fi
           R CMD Rd2pdf --no-preview --output=release/jmpread-manual.pdf .
           cp jmpread.Rcheck/00check.log release/R-release-check.log
           printf '%s\n' "$GITHUB_SHA" > release/SOURCE-COMMIT
@@ -88,6 +89,7 @@ jobs:
           sha256sum --check SHA256SUMS
           cd ../..
           R CMD check --as-cran .release-input/release/jmpread_*.tar.gz || { cat jmpread.Rcheck/Rdlatex.log; exit 1; }
+          if grep -Eq '^Status:.*(ERROR|WARNING)' jmpread.Rcheck/00check.log; then cat jmpread.Rcheck/00check.log; exit 1; fi
       - uses: actions/upload-artifact@v4
         if: always()
         with:
